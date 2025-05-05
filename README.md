@@ -6,10 +6,10 @@ This is the **backend server** for a Bug Tracking application, built using **Nod
 
 ## ✨ Features
 
-- 🔐 User authentication with JWT stored in HTTP-only cookies  
-- 🐛 Full CRUD functionality for bug tracking  
-- 📦 Dockerized: separate containers for the server and MongoDB  
-- 💾 Persistent MongoDB storage using Docker volumes  
+- 🔐 User authentication with JWT stored in HTTP-only cookies. 
+- 🐛 Full CRUD functionality for bug tracking.  
+- 📦 Dockerized: separate containers for the server and MongoDB.  
+- 💾 Persistent MongoDB storage using Docker volumes.  
 
 ---
 
@@ -45,50 +45,59 @@ PORT=8000
 MONGO_URI=mongodb://mongo:27017/BugTrakerDB
 💡 If you want to connect to a MongoDB Atlas cloud cluster, replace MONGO_URI with your cloud connection string.
 JWT_SECRET=your_jwt_secret_key
-NODE_ENV=development```
+NODE_ENV=development
+```
 
-🧪 Running the App
+---
+
+### 🧪 Running the App
 ▶️ Option 1: Local Development (Without Docker)
-1. Clone the repository:
+- Clone the repository:
+```
 git clone https://github.com/AvihayFinish/BugTracker.git
 cd your-repo-name
-2. Install dependencies:
+```
+- Install dependencies:
+```
 npm install
-3. Create a .env file as shown above.
-4. Start the server:
+```
+- Create a .env file as shown above.
+- Start the server:
+```
 npm start
-or with nodemon (if installed):
+```
+- or with nodemon (if installed):
+```
 npm run server
+```
 
 🐳 Option 2: Using Docker (Recommended)
 1. Make sure your .env file exists as shown above.
 2. Run the app with Docker Compose:
+```
 docker compose up --build
-This will:
-
-Build the Node.js server from the Dockerfile
-
-Start a MongoDB container from the official image
-
-Create a named volume to persist MongoDB data
+```
+This will: <br>
+• Build the Node.js server from the Dockerfile. <br>
+• Start a MongoDB container from the official image. <br>
+• Create a named volume to persist MongoDB data. <br>
 
 3. To stop and remove everything (including the volume):
+```
 docker compose down --volumes
+```
 
-🔌 API Endpoints
+---
+
+
+### 🔌 API Endpoints
 The backend exposes routes for:
 
-User registration
-
-User login
-
-Bug creation
-
-Bug update
-
-Bug deletion
-
-Bug listing
+• User registration. <br>
+• User login. <br>
+• Bug creation. <br>
+• Bug update. <br>
+• Bug deletion. <br>
+• Bug listing. <br>
 
 Endpoints are defined and documented in the controllers/ directory. Use Postman or another API client to test.
-
