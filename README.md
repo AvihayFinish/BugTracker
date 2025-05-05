@@ -45,7 +45,7 @@ PORT=8000
 MONGO_URI=mongodb://mongo:27017/BugTrakerDB
 💡 If you want to connect to a MongoDB Atlas cloud cluster, replace MONGO_URI with your cloud connection string.
 JWT_SECRET=your_jwt_secret_key
-NODE_ENV=development
+NODE_ENV=development```
 
 🧪 Running the App
 ▶️ Option 1: Local Development (Without Docker)
