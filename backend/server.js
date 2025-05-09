@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import userRouter from './routes/userRouter.js';
 import bugRouter from './routes/bugRouter.js';
+import groupRouter from './routes/groupRouter.js';
 import { notFound, 
         errorHandler } from './midlleware/errorMidlleware.js';
 import connectDB from './config/db.js';
@@ -27,6 +28,7 @@ app.use(cookieParser());
 
 app.use('/users', limiter, userRouter);
 app.use('/bugs', bugRouter);
+app.use('/group', groupRouter);
 
 app.use(notFound);
 app.use(errorHandler);

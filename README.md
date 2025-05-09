@@ -1,15 +1,23 @@
 # 🐞 BugTracker Backend
 
-This is the **backend server** for a Bug Tracking application, built using **Node.js**, **Express**, **MongoDB**, and **JWT**. It provides RESTful APIs for user authentication and bug management, and is containerized using **Docker** for easy development and deployment.
+This is the backend server for a Bug Tracking application built with **Node.js**, **Express**, **MongoDB**, and **JWT**. It supports user authentication, bug tracking, group-based access control, and collaboration workflows.
 
 ---
 
-## ✨ Features
+## 🚀 Features
 
-- 🔐 User authentication with JWT stored in HTTP-only cookies. 
-- 🐛 Full CRUD functionality for bug tracking.  
-- 📦 Dockerized: separate containers for the server and MongoDB.  
-- 💾 Persistent MongoDB storage using Docker volumes.  
+- ✅ User registration & login with secure **JWT cookies**
+- 🐞 Full bug CRUD: Create, update, delete, assign, filter
+- 👥 Group system:
+  - Create and manage groups
+  - Associate bugs with groups
+  - Users only see bugs in their groups
+- 📬 Membership workflow:
+  - Users can request to join a group
+  - Managers can invite users to groups
+  - Users must accept/decline invitations
+- 🔐 Protected routes using authentication middleware
+- 🐳 Docker + Docker Compose setup with persistent MongoDB volume
 
 ---
 
@@ -31,6 +39,7 @@ Make sure you have the following installed:
 
 - [Node.js](https://nodejs.org/)
 - [Express.js](https://expressjs.com/)
+- [MongoDB Atlas or local MongoDB](https://www.mongodb.com/)
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
@@ -89,15 +98,38 @@ docker compose down --volumes
 
 ---
 
+### 🔐 API Overview
+🔑 Auth Routes
+- POST	    /users/register	    Register new user
+- POST	    /users/login	    Login and get token
+- POST      /users/logout       Logout and delete token
+- GET	    /users/profile	    Get authenticated user
+- PUT       /users/profile      Update user details
 
-### 🔌 API Endpoints
-The backend exposes routes for:
+🐞 Bug Routes
+- GET	    /bugs	    List bugs (filterable)
+- POST	    /bugs	    Create new bug
+- PUT	    /bugs/:id	Update a bug
+- DELETE	/bugs/:id	Delete a bug
 
-• User registration. <br>
-• User login. <br>
-• Bug creation. <br>
-• Bug update. <br>
-• Bug deletion. <br>
-• Bug listing. <br>
+👥 Group Routes
+- POST	    /group	    Create a new group
+- GET	    /group/:id	Get group details + members
+- PUT	    /group/:id	Update group info
+- DELETE	/group/:id	Delete group
 
-Endpoints are defined and documented in the controllers/ directory. Use Postman or another API client to test.
+📬 Group Join System
+- POST	    /group/request	User requests to join group
+- POST	    /group/invite	Manager invites user to group
+- GET	    /group/requests	Manager views join requests
+- GET	    /group/invites	User views pending invites
+- PATCH	    /group/request/:id/response	User accepts/declines join request
+- PATCH	    /group/invite/:id/response	User accepts/declines invite
+- DELETE	/group/request/:id	Cancel join request
+
+---
+
+### 🧪 Testing
+You can use Postman or any REST client to test the API. Make sure to send the JWT cookie with each protected request.
+
+Endpoints are defined and documented in the controllers/ directory.

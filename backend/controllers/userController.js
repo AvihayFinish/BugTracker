@@ -83,6 +83,7 @@ const getProfile = asyncHandler(async (req, res) => {
       _id: req.user._id,
       name: req.user.name,
       email: req.user.email,
+      groups: req.user.groups,
     });
   }
   else {

@@ -30,7 +30,13 @@ const bugSchema = mongoose.Schema(
     takedBy: {
         type: String,
         default: "no one",
-    }
+    },
+    group:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Group",
+        required: true,
+    },
   },
   {
     timestamps: true,
